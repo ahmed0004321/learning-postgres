@@ -43,6 +43,7 @@ import config from "../../config/env";
 //     loginUserIntoDB
 // }
 
+//did it for practice:
 const loginUserIntoDB = async(payload: {email: string, password: string}) => {
     const {email, password} = payload;
 
@@ -73,9 +74,9 @@ const loginUserIntoDB = async(payload: {email: string, password: string}) => {
             id: user.id,
             name: user.name,
             email: user.email,
+            role: user.role,
             is_active: user.is_active
         }
-        
         const accessToken = jwt.sign(jwtPayload, config.secret as string, {expiresIn: "1d"});
         return {accessToken};
 }

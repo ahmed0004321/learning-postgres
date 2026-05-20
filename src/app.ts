@@ -7,6 +7,8 @@ import { pool } from "./DB";
 import { userRoute } from "./modules/user/user.route";
 import { profileRoute } from "./modules/profile/profile.route";
 import { authRoute } from "./modules/Auth/auth.route";
+import fs from "fs";
+import logger from "./middleware/logger";
 const app: Application = express();
 
 // data onek format e pathano jay...json onek popular
@@ -17,6 +19,9 @@ app.use(express.json());
 app.use(express.text());
 app.use(express.urlencoded({ extended: true })); // ai url encoded e akta issue ace, sheta holo jodi ami nested type data
 //send kori amake bole dite hobe {} bracket e extended, na hole oo data nibe na
+
+//custom middleware
+app.use(logger);
 
 
 app.get("/", (req: Request, res: Response) => {

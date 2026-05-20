@@ -7,6 +7,8 @@ export const pool = new Pool({
 
 export const initDB = async () => {
   try {
+    //role VARCHAR(10) DEFAULT 'user', ai line mane jodi role field vul kore na dii taile default vabe user hishbe set 
+    //hoe jabe
     await pool.query(`
         CREATE TABLE IF NOT EXISTS users(
         id SERIAL PRIMARY KEY,
@@ -15,6 +17,7 @@ export const initDB = async () => {
         password TEXT NOT NULL,
         is_active BOOLEAN DEFAULT true,
         age INT,
+        role VARCHAR(10) DEFAULT 'user', 
 
         created_at TIMESTAMP DEFAULT NOW(),
         updated_at TIMESTAMP DEFAULT NOW()

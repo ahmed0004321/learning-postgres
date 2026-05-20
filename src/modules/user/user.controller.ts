@@ -23,6 +23,7 @@ const createUser = async (req: Request, res: Response) => {
 };
 
 const getUser = async (req: Request, res: Response) => {
+  console.log("controller",req.user);
   try {
     const result = await userService.getAllUserFromDB();
     if (result.rows.length === 0) {
@@ -52,7 +53,7 @@ const getSingleUser = async (req: Request, res: Response) => {
   try {
     const result = await userService.getSingleUserFromDB(id as string);
     if (result.rows.length === 0) {
-      res.status(404).json({
+      return res.status(404).json({
         success: false,
         message: "Users not found!",
         data: {},
